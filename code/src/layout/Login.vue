@@ -1,58 +1,44 @@
 <template>
-  
   <main class="mt-0 main-content main-content-bg">
     <section>
-      <div class="page-header min-vh-100">
+      <div class="page-header min-vh-100 d-flex align-items-center">
         <div class="container">
-          <div class="row">
-            <div class="mx-auto col-xl-5 col-lg-5 col-md-6 d-flex flex-column">
-              <div class="card ">
-                <div class="pb-0 card-header text-start">
-                  <img :src="logoTlc" class="w-85 d-flex mx-auto mb-3" alt="">
-                  <h3 class="font-weight-bolder text-primary text-center text-gradient">{{nombreAplicacion}}</h3>
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-5 col-md-8">
+              <div class="card">
+                <div class="card-header text-center pb-0">
+                  <img :src="logoTlc" class="w-50 mx-auto mb-3" alt="Logo">
+                  <h3 class="font-weight-bold text-primary">{{ nombreAplicacion }}</h3>
                   <hr>
-                  <p class="mb-0 text-center">Ingrese su Usuario y Contraseña</p>
+                  <p class="mb-0">Ingrese su Usuario y Contraseña</p>
                 </div>
                 <div class="card-body">
-                  <div class="text-start">
-                    <label>Usuario de red</label>
-                    <div class="input-group">
-                      <span class="input-group-text" style="background: none">
-                        <i class="fa fa-user"></i>
-                      </span>
-                      <input
-                        id="usuario"
-                        v-model="usuario"
-                        type="text"
-                        class="form-control"
-                        placeholder="Usuario"
-                        @keypress.enter="login()"
-                      />
-                    </div>                    
-                    <label>Contraseña</label>
-                    <div class="input-group">
-                      <span class="input-group-text" style="background: none">
-                        <i class="fas fa-key"></i>
-                      </span>
-                      <input
-                        id="password"
-                        v-model="password"
-                        type="password"
-                        class="form-control"
-                        placeholder="Contraseña"
-                        @keypress.enter="login()"
-                      />
+                  <form @submit.prevent="login">
+                    <div class="mb-3">
+                      <label for="usuario" class="form-label">Usuario de red</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        <input v-model="usuario" id="usuario" type="text" class="form-control" placeholder="Usuario" required>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Contraseña</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        <input v-model="password" id="password" type="password" class="form-control" placeholder="Contraseña" required>
+                      </div>
                     </div>
                     <div class="text-center">
-                      <vsud-button class="my-4 mb-2" variant="gradient" color="primary" full-width :loading="loading" @click="login">
-                        <span v-if="loading"><i class="fas fa-lg fa-spinner fa-spin"></i> </span>
+                      <button type="submit" class="btn btn-primary w-100" :disabled="loading">
+                        <span v-if="loading"><i class="fas fa-spinner fa-spin"></i> </span>
                         <span v-else>Ingresar</span>
-                      </vsud-button>
+                      </button>
                     </div>
-                    <!-- <div class="text-center mt-2">
-                      <a @click="signup" class="btn-signup cursor-pointer text-secondary text-hover-primary">SOLICITAR ACCESO</a>
-                    </div> -->
-                  </div>
+                  </form>
+                  <!-- Opcional: Enlace para solicitar acceso -->
+                  <!-- <div class="text-center mt-2">
+                    <a href="#" @click="signup" class="btn btn-link text-secondary">SOLICITAR ACCESO</a>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -61,17 +47,11 @@
       </div>
     </section>
   </main>
-  <!-- <footer class="py-5 login-footer">
+  <footer class="py-5 login-footer text-center">
     <div class="container">
-      <div class="row">
-        <div class="mx-auto mt-1 text-center">
-          <p class="mb-0 text-secondary">
-            {{"Proehtics - Version " + version}}
-          </p>
-        </div>
-      </div>
+      <p class="mb-0 text-secondary">{{ "Proehtics - Version " + version }}</p>
     </div>
-  </footer> -->
+  </footer>
 </template>
 
 <script>
