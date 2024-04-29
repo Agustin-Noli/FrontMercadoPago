@@ -22,9 +22,9 @@
                       </span>
                       <input
                         id="usuario"
+                        v-model="usuario"
                         type="text"
                         class="form-control"
-                        v-model="usuario"
                         placeholder="Usuario"
                         @keypress.enter="login()"
                       />
@@ -36,9 +36,9 @@
                       </span>
                       <input
                         id="password"
+                        v-model="password"
                         type="password"
                         class="form-control"
-                        v-model="password"
                         placeholder="Contraseña"
                         @keypress.enter="login()"
                       />
@@ -61,7 +61,7 @@
       </div>
     </section>
   </main>
-  <footer class="py-5 login-footer">
+  <!-- <footer class="py-5 login-footer">
     <div class="container">
       <div class="row">
         <div class="mx-auto mt-1 text-center">
@@ -71,23 +71,21 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> -->
 </template>
 
 <script>
 import { mapStores } from 'pinia'
 import { useUserStore } from '@/stores/user.js'
 import VsudButton from "@/components/Vsud/VsudButton.vue";
-import logoTlc from "@/assets/img/logoAS.png"
+import logoTlc from "@/assets/img/mp.png"
 
 export default {
-  name: "Login",
+  name: "UserLogin",
   components: {
     VsudButton
   },
-  computed: {
-    ...mapStores(useUserStore)
-  },
+
   data() {
     return {
       usuario: null,
@@ -97,6 +95,9 @@ export default {
       loading: false,
       nombreAplicacion: import.meta.env.VITE_NOMBRE_APLICACION
     }
+  },
+    computed: {
+    ...mapStores(useUserStore)
   },
   methods: {
     login() {

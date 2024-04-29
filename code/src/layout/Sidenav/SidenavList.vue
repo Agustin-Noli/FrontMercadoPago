@@ -11,26 +11,24 @@
       </li>
     </ul>
   </div>
-  <div class="d-flex justify-content-center" >
+  <!-- <div class="d-flex justify-content-center" >
     <small>Version {{version}}</small>
-  </div>
+  </div> -->
 </template>
 <script>
 import { mapStores } from 'pinia'
 import { useUserStore } from '@/stores/user.js'
-import Icon from "@/components/Icon.vue";
+
 import SidenavCollapse from "./SidenavCollapse.vue";
 import { pantallas } from "@/router/pantallas.js"
 
 export default {
   name: "SidenavList",
   components: {
-    Icon,
+
     SidenavCollapse
   },
-  computed: {    
-    ...mapStores(useUserStore)
-  },
+
   data() {
     return {
       isActive: "active" ,
@@ -38,15 +36,19 @@ export default {
       menu : pantallas
     };
   },
+    computed: {    
+    ...mapStores(useUserStore)
+  },
+    created(){
+    
+  },
   methods: {
     getRoute() {
       const routeArr = this.$route.path.split("/");
       return routeArr[1];
     }
   },
-  created(){
-    
-  }
+
 };
 
 </script>

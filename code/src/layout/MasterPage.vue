@@ -22,11 +22,14 @@ export default {
   computed: {
     ...mapStores(useUserStore)
   },
+    mounted(){
+    this.versionado();
+  },
   methods: {
     versionado(){
-      const lsName = 'MFE_VERSION';
+     // const lsName = 'MFE_VERSION';
       
-      let JenkinsName = import.meta.env.VITE_JENKINS_NAME;
+      //let JenkinsName = import.meta.env.VITE_JENKINS_NAME;
 
       // if(JenkinsName){
       //   this.$axiosMS.get('bss/crm/seguridad/v1/jenkins/' + JenkinsName + '/version').then((response) => {
@@ -47,8 +50,6 @@ export default {
 
     }
   },
-  mounted(){
-    this.versionado();
-  }
+
 };
 </script>

@@ -24,7 +24,7 @@
 </template>
 <script>
 import SidenavList from "./SidenavList.vue";
-import logoTlc from "@/assets/img/logoAS.png";
+import logoTlc from "@/assets/img/mp.png";
 
 export default {
   name: "IndexComponent",

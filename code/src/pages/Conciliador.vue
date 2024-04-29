@@ -5,7 +5,7 @@
             <div class="mb-4 card">
                 <div class="p-3 card-body">
                     <div class="d-flex flex-column">
-                        <h3 class="text-center">AlertasPorDiasDeCorte.</h3>
+                        <h3 class="text-center">Conciliador.</h3>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name:'RiesgoporCliente'
+        name:'ConciliadorMp'
     }
 </script>
 
