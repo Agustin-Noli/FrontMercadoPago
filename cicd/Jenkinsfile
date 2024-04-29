@@ -1,0 +1,14 @@
+@Library('itss-library') _
+pipeline_standart_k8s ( 
+
+    K8S_CLUSTER_NAME: "tkg-bss-{ambiente}-001",
+    K8S_NAMESPACE: "crm",
+        
+    TECNOLOGIA: "vue",
+    REGISTRY_URL: env.url_nexus_contingencia, ////NEXUS/HARBOR, subida de imagenes
+    REGISTRY_CREDENTIALSID: 'nexus_contingencia',
+    REGISTRY_NAME: "arquitectura/micro-frontend",  //cobranza/wicred/...
+    NETPATH: "code/",
+
+   // EMAIL_RESPONSABLE_PROD: "mcontreras@telecentro.net.ar"
+)

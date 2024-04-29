@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {projectName}
+  labels:
+    app: {projectName}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {projectName}
+    spec:
+      containers:
+      - name: {projectName}
+        image: {image}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80 
+      imagePullSecrets:
+      - name: cr-nexus
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: {projectName}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {projectName}
+spec:
+  selector:
+    app: {projectName}
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {projectName}
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: {projectName}.{clusterName}.telecentro.net.ar
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {projectName}
+                port:
+                  number: 80

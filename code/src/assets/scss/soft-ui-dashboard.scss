@@ -1,0 +1,68 @@
+// =========================================================
+// * Soft UI Dashboard - v1.0.4
+// =========================================================
+//
+// * Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
+// * Copyright 2022 Creative Tim (https://www.creative-tim.com)
+//
+// Coded by www.creative-tim.com
+//
+// =========================================================
+//
+// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+// Bootstrap Functions
+@import "soft-ui-dashboard/bootstrap/functions";
+
+// Custom Variables
+@import "soft-ui-dashboard/custom/variables";
+
+// Theme Variables
+@import "soft-ui-dashboard/variables";
+
+// Bootstrap Core
+@import "soft-ui-dashboard/bootstrap/bootstrap";
+
+// Theme Core
+@import "soft-ui-dashboard/theme";
+
+// Custom Variables
+@import "soft-ui-dashboard/custom/styles";
+
+@import 'tippy.js/dist/tippy.css';
+
+.h-55{
+    height: 55% !important;
+}
+
+.bg-none{
+    background-color: transparent !important;
+}
+
+/* ===== Scrollbar ===== */
+  /* Firefox */
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: $primary-gradient-state $gray-100;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: $gray-100;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: $primary-gradient-state;
+    border-radius: 10px;
+    border: 3px solid $gray-100;
+  }
+
+  .btn-signup{
+    font-size: 14px;
+    font-weight: bold;
+    user-select: none;
+  }
