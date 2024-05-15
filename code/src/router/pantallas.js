@@ -1,5 +1,5 @@
 export const pantallas = [
 
-    {"name":"Conciliador","to":"Conciliador","icon":"fa-solid fa-server"},
-
+    {"name":"Pendientes","to":"Conciliador","icon":"fa-solid fa-server"},
+    {"name":"Confirmados","to":"Conciliador","icon":"fa-solid fa-server"},
 ];

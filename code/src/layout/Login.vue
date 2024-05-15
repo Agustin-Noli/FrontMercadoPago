@@ -18,14 +18,14 @@
                       <label for="usuario" class="form-label">Usuario de red</label>
                       <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
-                        <input v-model="usuario" id="usuario" type="text" class="form-control" placeholder="Usuario" required>
+                        <input v-model="usuario" type="text" class="form-control" placeholder="Usuario" required>
                       </div>
                     </div>
                     <div class="mb-3">
                       <label for="password" class="form-label">Contraseña</label>
                       <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        <input v-model="password" id="password" type="password" class="form-control" placeholder="Contraseña" required>
+                        <input v-model="password"  type="password" class="form-control" placeholder="Contraseña" required>
                       </div>
                     </div>
                     <div class="text-center">
@@ -47,23 +47,23 @@
       </div>
     </section>
   </main>
-  <footer class="py-5 login-footer text-center">
+  <!-- <footer class="py-5 login-footer text-center">
     <div class="container">
-      <p class="mb-0 text-secondary">{{ "Proehtics - Version " + version }}</p>
+      <p class="mb-0 text-secondary">{{ "Mercado Pago Conciliator - Version " + version }}</p>
     </div>
-  </footer>
+  </footer> -->
 </template>
 
 <script>
 import { mapStores } from 'pinia'
 import { useUserStore } from '@/stores/user.js'
-import VsudButton from "@/components/Vsud/VsudButton.vue";
+//import VsudButton from "@/components/Vsud/VsudButton.vue";
 import logoTlc from "@/assets/img/mp.png"
 
 export default {
   name: "UserLogin",
   components: {
-    VsudButton
+    //VsudButton
   },
 
   data() {
@@ -71,7 +71,7 @@ export default {
       usuario: null,
       password: null,
       logoTlc,
-      version : import.meta.env.VITE_UI_VERSION.replace('{JV}', localStorage.getItem('MFE_VERSION')) ,
+      //version : import.meta.env.VITE_UI_VERSION.replace('{JV}', localStorage.getItem('MFE_VERSION')) ,
       loading: false,
       nombreAplicacion: import.meta.env.VITE_NOMBRE_APLICACION
     }

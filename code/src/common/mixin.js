@@ -34,7 +34,7 @@ let mixin = {
        window.URL.revokeObjectURL(url);
     },
     LoadingTLC(enable=true, message='Cargando...') {    
-      debugger 
+       
       const loading = document.getElementById("app-loading");
       if (loading) {
         loading.style.display = enable ? 'block' : 'none';
