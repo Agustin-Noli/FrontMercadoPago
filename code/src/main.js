@@ -85,14 +85,14 @@ const userStore = useUserStore();
 
 /////
 
-const axiosMS = axios.create({
+// const axiosMS = axios.create({
   
-  baseURL: import.meta.env.VITE_APIGW_BASE,
-  headers: {
-   // 'X-API-KEY': import.meta.env.VITE_APIKEY,
-    'Content-Type': 'application/json',
-  }
-});
+//   baseURL: import.meta.env.VITE_APIGW_BASE,
+//   headers: {
+//     'X-API-KEY': import.meta.env.VITE_APIKEY,
+//     'Content-Type': 'application/json',
+//   }
+// });
 
 const axiosCRM = axios.create({
   baseURL: import.meta.env.VITE_APICRM_BASE,
@@ -102,64 +102,64 @@ const axiosCRM = axios.create({
 });
 
 // requestInterceptor(axiosMS);
-// requestInterceptor(axiosCRM);
+ requestInterceptor(axiosCRM);
 
 // responseInterceptor(axiosMS);
-// responseInterceptor(axiosCRM);
+ responseInterceptor(axiosCRM);
 
-app.config.globalProperties.$axiosMS = axiosMS;
+//app.config.globalProperties.$axiosMS = axiosMS;
 app.config.globalProperties.$axiosCRM = axiosCRM;
 
 ///
 
-// function requestInterceptor(axiosInstance) {
-//   axiosInstance.interceptors.request.use( config => { 
-//     const token = userStore.token; 
-//     if (token) {
-//         config.headers['Authorization'] = 'Bearer ' + token;
-//     }
-//     return config;
-//   },
-//   error => {
-//     return Promise.reject(error);
-//   });
-// }
+function requestInterceptor(axiosInstance) {
+  axiosInstance.interceptors.request.use( config => { 
+    const token = userStore.token; 
+    if (token) {
+        config.headers['Authorization'] = 'Bearer ' + token;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  });
+}
 
-// function responseInterceptor(axiosInstance) {
-//   axiosInstance.interceptors.response.use(function(response) {
-//     return response;
-//   }, function(error) {
-//     if(error.config.url.includes('ping'))
-//       return Promise.reject(error);
+function responseInterceptor(axiosInstance) {
+  axiosInstance.interceptors.response.use(function(response) {
+    return response;
+  }, function(error) {
+    if(error.config.url.includes('ping'))
+      return Promise.reject(error);
   
-//     if(error.response.status === 401 || (error.response.status === 403 && error.response.data.message && error.response.data.message == 'You cannot consume this service')){
-//       notify({
-//         title: 'La sesión expiró.',
-//         text: 'Vuelva a ingresar sus credenciales para continuar.',
-//         type: 'error'
-//       });
-//       router.push('/login');
-//     } else { 
-//       if(!error.response.data || !error.response.data.errorDescription){
-//         notify({
-//           title: 'Problemas de conexion.',
-//           text: 'No se pudo procesar la llamada al servicio.',
-//           type: 'error'
-//         });
-//       }
-//       else {
-//         notify({
-//           title: error.response.data.visualErrorDescription,
-//           text: error.response.data.errorDescription,
-//           type: 'error'
-//         });
-//       }
+    if(error.response.status === 401 || (error.response.status === 403 && error.response.data.message && error.response.data.message == 'You cannot consume this service')){
+      notify({
+        title: 'La sesión expiró.',
+        text: 'Vuelva a ingresar sus credenciales para continuar.',
+        type: 'error'
+      });
+      router.push('/login');
+    } else { 
+      if(!error.response.data || !error.response.data.errorDescription){
+        notify({
+          title: 'Problemas de conexion.',
+          text: 'No se pudo procesar la llamada al servicio.',
+          type: 'error'
+        });
+      }
+      else {
+        notify({
+          title: error.response.data.visualErrorDescription,
+          text: error.response.data.errorDescription,
+          type: 'error'
+        });
+      }
       
-//     }
+    }
   
-//     return Promise.reject(error);
-//   });
-// }
+    return Promise.reject(error);
+  });
+}
 
 
 

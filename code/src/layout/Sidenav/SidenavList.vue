@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       isActive: "active" ,
-      version : import.meta.env.VITE_UI_VERSION.replace('{JV}', localStorage.getItem('CM_VERSION')) ,
+      version : import.meta.env.VITE_UI_VERSION ,
       menu : pantallas
     };
   },

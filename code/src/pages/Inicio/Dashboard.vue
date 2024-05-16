@@ -24,10 +24,11 @@ export default {
       
     };
   },
+    created(){
+  },
   methods: {
     
   },
-  created(){
-  }
+
 };
 </script>

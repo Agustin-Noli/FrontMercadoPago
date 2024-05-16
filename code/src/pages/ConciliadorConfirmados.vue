@@ -24,18 +24,18 @@
                 filas-por-page-message="Registros por página"
                 rows-of-page-separator-message="de"
               >
-                <template #item-acciones="item">
+                <!-- <template #item-acciones="item">
                   <span @click="UpdateRegistro(item)">
                     <i style="color: verde; cursor: pointer;" class="far fa-2x fa-check-square" title="Conciliar"></i>
                   </span>
-                </template>
+                </template> -->
               </EasyDataTable>
             </div>
           </div>
         </div>
 
         
-<div id="modalMP" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalMPLabel">
+<!-- <div id="modalMP" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalMPLabel">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -49,16 +49,16 @@
       <div class="modal-body">
         ¿Estás seguro que desea conciliar este pago?
         <h6 style="padding-left: 8px;">Transferencia: {{transeferencia}}</h6>
-        <h6 style="padding-left: 8px;">Cantidad pesos : $ {{cantidad}}</h6>
+        <h6 style="padding-left: 8px;">Cantidad pesos $: {{cantidad}}</h6>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" @click="Confirm()">Confirmar</button>
+        <button type="button" class="btn btn-primary">Confirmar</button>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
@@ -73,7 +73,7 @@
 import EasyDataTable from "vue3-easy-data-table";
 import FrameMixins from "../common/mixin";
 export default {
-  name: 'ConciliadorMp',
+  name: 'ConciliadorConfirmados',
  
   components: {
 
@@ -88,7 +88,7 @@ export default {
       modalMP:false,
       transeferencia:"",
       cantidad:"",
-    };
+    }
   },
   
   created(){
@@ -99,56 +99,23 @@ this.SearchInfo()
   },
     
   methods:{
-    UpdateRegistro(item){
-    this.transeferencia = item.payment_id
-    this.cantidad = item.transaction_amount
-    //this.CerrarPopUp('modalReasignacionPersonas');
-      this.AbrirPopUp('modalMP');
 
-    },
-    Confirm(){
-      debugger
-             this.$axiosCRM.put(`/internal/concilliation/${this.transeferencia}/save`)
-        .then(() => {
-
-        })
-        .catch(() => {
-          // Maneja cualquier error que ocurra durante la solicitud
-         this.$notify({
-           title: 'Error.',
-           text: 'No se pudo cargar los pagos a conciliar',
-           type: 'error'
-         });
-         // type: 'success', // other types: 'warn', 'error', 'info'
-        })
-        .finally( () => {
-          // Maneja cualquier error que ocurra durante la solicitud
-           this.loading = false;
-           
-           this.$notify({
-           title: 'Conciliado .',
-           text: 'Se Registro guardado en la tabla de confirmados',
-           type: 'success'
-         });
-
-      this.CerrarPopUp('modalMP');
-          this.SearchInfo()
-        })
-    },
     ActualizarGrilla(){
       this.SearchInfo()
     },
     SearchInfo(){
-       this.$axiosCRM.get('/internal/concilliation/search?status=PENDING')
+       this.$axiosCRM.get('/internal/concilliation/searchsearch?status=CONCILLED')
         .then(response => {
 
+          console.log(response);
+   
         this.datosMp.datos = response.data
         })
         .catch(() => {
           // Maneja cualquier error que ocurra durante la solicitud
          this.$notify({
            title: 'Error.',
-           text: 'No se pudo cargar los pagos a conciliar',
+           text: 'No se pudo cargar los pagos conciliados',
            type: 'error'
          });
         })
@@ -198,11 +165,11 @@ const struct = [
     text: "CUIL/CUIT",
     sortable: true,
   },
-  {
-    value: "acciones",
-    text: "",
-    sortable: false,
-  },
+  // {
+  //   value: "acciones",
+  //   text: "",
+  //   sortable: false,
+  // },
 ];
 
 </script>

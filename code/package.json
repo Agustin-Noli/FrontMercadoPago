@@ -1,8 +1,7 @@
 {
   "name": "template-microfrontend",
   "private": true,
-  "version": "1.0.0",
-  "author": "Arquitectura ITSS",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",

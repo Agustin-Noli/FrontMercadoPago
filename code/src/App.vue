@@ -17,27 +17,32 @@ export default {
   computed: {
     ...mapStores(useUserStore)
   },
+
+  created(){    
+    //this.loginQueryToken();
+  },
   methods: {
-    loginQueryToken(){
-      let qstring = this.getQueryString();
+    
+    // loginQueryToken(){
+    //   let qstring = this.getQueryString();
       
-      if(qstring.token)
-      {
-        this.userStore.setToken(qstring.token);
+    //   if(qstring.token)
+    //   {
+    //     this.userStore.setToken(qstring.token);
 
-        let BaseURL = import.meta.env.VITE_APIGW_BASE;
+    //     let BaseURL = import.meta.env.VITE_APIGW_BASE;
 
-        this.axios.get(BaseURL + 'bss/crm/seguridad/v1/usuario/claims', { headers: { 'Authorization': 'Bearer ' + qstring.token}}).then((response) => {
-          let data = response.data;
-          data.token = qstring.token; 
+    //     this.axios.get(BaseURL + 'bss/crm/seguridad/v1/usuario/claims', { headers: { 'Authorization': 'Bearer ' + qstring.token}}).then((response) => {
+    //       let data = response.data;
+    //       data.token = qstring.token; 
 
-          this.userStore.login(data, (qstring.framed === 'true'), window.location.hash.split('?')[0].substring(1));
-          this.validateSesion();
-        });
-      } else{
-        this.validateSesion();
-      }
-    },
+    //       this.userStore.login(data, (qstring.framed === 'true'), window.location.hash.split('?')[0].substring(1));
+    //       this.validateSesion();
+    //     });
+    //   } else{
+    //     this.validateSesion();
+    //   }
+    // },
     getQueryString() {
       const queryString = window.location.href.split("?")[1];
       let obj = {};
@@ -60,9 +65,6 @@ export default {
       }
 
     }
-  },
-  created(){    
-    this.loginQueryToken();
   }
 };
 </script>

@@ -26,13 +26,12 @@ export const useUserStore = defineStore({
 
             this.$router.push({name:'Login'})
         },
-        login(data, framed, url = '/inicio'){ 
-            this.usuarioID = data.usuarioId;
+        login(data, framed, url = '/ConciliadorMp'){ 
+
             this.isAuthenticated = true;
             this.token = data.token;
-            this.usuario = data.userName;
-            this.rol = data.rol;
-            this.tokenExp = data.fechaExpiracion ? data.fechaExpiracion : this.tokenExp;
+            this.usuario = data.username;
+            this.rol = data.role;
             this.framed = framed;
 
             //TODO: REDIRECT A PANTALLA PREVIA

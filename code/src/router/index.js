@@ -7,7 +7,7 @@ import NotFound from "@/pages/NotFound.vue";
 import AccesoDenegado from "@/pages/AccesoDenegado.vue";
 import Prueba from "@/pages/Prueba.vue";
 import Conciliador from "@/pages/Conciliador.vue";
-
+import ConciliadorConfirmados from "@/pages/ConciliadorConfirmados.vue";
 
 const routes = [  
   {
@@ -26,16 +26,23 @@ const routes = [
         name: "Inicio",
         component: Dashboard,
       },
+      // {
+      //   path: "/prueba",
+      //   name: "Prueba",
+      //   component: Prueba,
+      // },
       {
-        path: "/prueba",
-        name: "Prueba",
-        component: Prueba,
+        path: "/ConciliadorMp",
+        name: "ConciliadorMp",
+        component: Conciliador,
       },
       {
-        path: "/conciliador",
-        name: "Conciliador",
-        component: Conciliador,
+        path: "/conciliadosConfirmados",
+        name: "ConciliadorConfirmados",
+        component: ConciliadorConfirmados,
       }
+      
+
        ],
 
   },
@@ -64,10 +71,10 @@ const router = createRouter({
 router.beforeEach((to, from) => { 
   
   const userStore = useUserStore();
-  
+  debugger
   if(to.name !== 'Login' && to.name !== 'Signup')
   { 
-    if(!userStore.isAuthenticated)
+    if(userStore.isAuthenticated)
     {
       return true;
     }
