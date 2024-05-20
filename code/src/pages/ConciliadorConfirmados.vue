@@ -160,7 +160,7 @@ const struct = [
   },
 
   {
-    value: "payer_identification_type",
+    value: "payer_identification_number",
     text: "CUIL/CUIT",
     sortable: true,
   },
