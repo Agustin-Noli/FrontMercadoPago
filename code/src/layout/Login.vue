@@ -105,8 +105,8 @@ export default {
       }
 
        let request = {
-          "username" : "admin" ,
-          "password" : "E~rM^FVHHz2)&f#"
+          "username" : this.usuario ,
+          "password" : this.password
        };
       this.loading = true;
       

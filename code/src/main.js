@@ -141,11 +141,11 @@ function responseInterceptor(axiosInstance) {
       router.push('/login');
     } else { 
       if(!error.response.data || !error.response.data.errorDescription){
-        notify({
-          title: 'Problemas de conexion.',
-          text: 'No se pudo procesar la llamada al servicio.',
-          type: 'error'
-        });
+        // notify({
+        //   title: 'Problemas de conexion.',
+        //   text: 'No se pudo procesar la llamada al servicio.',
+        //   type: 'error'
+        // });
       }
       else {
         notify({

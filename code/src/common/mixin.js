@@ -33,21 +33,21 @@ let mixin = {
        a.click();
        window.URL.revokeObjectURL(url);
     },
-    LoadingTLC(enable=true, message='Cargando...') {    
-       
-      const loading = document.getElementById("app-loading");
-      if (loading) {
-        loading.style.display = enable ? 'block' : 'none';
+    formatCurrency(amount) {
+      // Convertir la cadena a un número
+      amount = parseFloat(amount.replace(",", "."));
+  
+      // Verificar si amount es un número válido
+      if (isNaN(amount) || typeof amount !== 'number') {
+          return "NaN"; // o alguna otra indicación de error
       }
-
-      const loadingMsg = document.getElementById("app-loading-msg");
-      if (loadingMsg) {
-        loadingMsg.textContent = message;
-      }
-    },
-    CloseLoadingTLC() {
-      this.LoadingTLC(false);
-    },
+  
+      // Formatear el número utilizando el método toLocaleString()
+      var formattedAmount = amount.toLocaleString('es-AR', { minimumFractionDigits: 2 });
+  
+      return formattedAmount;
+  }
+  ,
     DateFormat(date, format = "DD/MM/YYYY") {
       if (!date) return "";
 
