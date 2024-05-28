@@ -38,8 +38,8 @@
                 <template #item-acciones="item">
                   <span @click="UpdateRegistro(item)">
                     <i
-                      style="color: green; cursor: pointer"
-                      class="far fa-2x fa-check-square"
+                      style="color: black; cursor: pointer;font-size:20px;"
+                      class="fa-regular fa-square"
                     ></i>
                   </span>
                 </template>
@@ -220,13 +220,8 @@ const struct = [
     sortable: true,
   },
   {
-    value: "money_release_date",
-    text: "Fecha",
-    sortable: true,
-  },
-  {
-    value: "currency_id",
-    text: "Moneda",
+    value: "payment_status",
+    text: "Estado",
     sortable: true,
   },
   {
@@ -235,25 +230,14 @@ const struct = [
     sortable: true,
   },
   {
-    value: "payment_status",
-    text: "Estado",
-    sortable: true,
-  },
-  {
-    value: "payer_email",
-    text: "Email",
-    sortable: true,
-  },
-
-  {
-    value: "payer_identification_number",
-    text: "CUIL/CUIT",
+    value: "money_release_date",
+    text: "Fecha",
     sortable: true,
   },
   {
     value: "acciones",
     text: "",
     sortable: false,
-  },
+  }
 ];
 </script>

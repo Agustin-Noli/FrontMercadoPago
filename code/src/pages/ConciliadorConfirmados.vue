@@ -35,6 +35,14 @@
                 filas-por-page-message="Registros por página"
                 rows-of-page-separator-message="de"
               >
+                  <template #item-acciones>
+                  <span >
+                    <i
+                      style="color: green; cursor: pointer"
+                      class="far fa-2x fa-check-square"
+                    ></i>
+                  </span>
+                </template>
                 <template #item-money_release_date="item">
                   {{ DateFormat(item.money_release_date, "DD/MM/YYYY  hh:mm") }}
                 </template>
@@ -123,13 +131,18 @@ const struct = [
     sortable: false,
   },
   {
-    value: "concillied_date",
-    text: "Fecha de confirmacion",
+    value: "payment_status",
+    text: "Estado del pago MP",
+    sortable: false,
+  },
+  {
+    value: "transaction_amount",
+    text: "Transaccion",
     sortable: true,
   },
   {
-    value: "concillied_status",
-    text: "Estado",
+    value: "concillied_date",
+    text: "Fecha de conciliacion",
     sortable: true,
   },
   {
@@ -137,17 +150,6 @@ const struct = [
     text: "Usuario ",
     sortable: true,
   },
-  {
-    value: "currency_id",
-    text: "Moneda",
-    sortable: true,
-  },
-  {
-    value: "transaction_amount",
-    text: "Transaccion",
-    sortable: true,
-  },
-
   {
     value: "money_release_date",
     text: "Fecha de transaccion",
@@ -165,9 +167,9 @@ const struct = [
     sortable: true,
   },
   {
-    value: "payment_status",
-    text: "Estado MP",
+    value: "acciones",
+    text: "",
     sortable: false,
-  },
+  }
 ];
 </script>
